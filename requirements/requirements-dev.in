@@ -1,0 +1,6 @@
+-r requirements.txt
+
+black
+pip-tools
+pre-commit
+ruff
