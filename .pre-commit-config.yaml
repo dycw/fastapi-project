@@ -6,7 +6,7 @@ repos:
       - id: ruff
         args: [--fix]
   - repo: https://github.com/dycw/pre-commit-hooks
-    rev: 0.8.23
+    rev: 0.8.26
     hooks:
       - id: run-bump2version
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -56,7 +56,7 @@ repos:
         args:
           - --allow-unsafe
           - --generate-hashes
-          - --output-file=requirements/requirements.txt
+          - --output-file=src/requirements.txt
           - --quiet
           - --upgrade
           - requirements/requirements.in
@@ -65,8 +65,9 @@ repos:
         args:
           - --allow-unsafe
           - --generate-hashes
-          - --output-file=requirements/requirements-dev.txt
+          - --output-file=src/requirements-dev.txt
           - --quiet
           - --upgrade
+          - requirements/requirements.in
           - requirements/requirements-dev.in
         files: ^requirements/requirements.*\.in$
