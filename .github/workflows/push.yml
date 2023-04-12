@@ -16,4 +16,4 @@ jobs:
         with:
           strategy: regex
           root: .bumpversion.cfg
-          regex_pattern: 'current_version = "(?<version>\d+\.\d+\.\d+)"'
+          regex_pattern: 'current_version = (?<version>\d+\.\d+\.\d+)'
