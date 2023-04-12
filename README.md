@@ -1,2 +1,3 @@
-# backend
-Example backend
+# FastAPI project
+
+Example [FastAPI](https://fastapi.tiangolo.com/) project
