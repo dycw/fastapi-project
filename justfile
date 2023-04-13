@@ -1,6 +1,7 @@
 alias t := test
 
 set dotenv-load := true
+set export := true
 set positional-arguments := true
 
 #### local ####################################################################
@@ -46,28 +47,28 @@ prod-build:
 prod-rm:
   docker rm app -f
 
-prod-run:
-  docker run --name app -e PORT=8765 -e DATABASE_URL=sqlite://sqlite.db \
-    -p 5003:8765 web:latest
-
 #### heroku ###################################################################
 
+APP := "infinite-shore-17009"
+
 heroku-build:
-  docker build -f src/Dockerfile.prod \
-    -t registry.heroku.com/sheltered-falls-06080/web ./src
+  docker build -f src/Dockerfile.prod -t "registry.heroku.com/$APP/web" ./src
+
+heroku-create:
+  heroku addons:create heroku-postgresql:mini --app "$APP"
 
 heroku-run:
   docker run --name app -e PORT=8765 -e DATABASE_URL=sqlite://sqlite.db \
-    -p 5003:8765 registry.heroku.com/sheltered-falls-06080/web:latest
+    -p 5003:8765 registry.heroku.com/$APP/web:latest
 
 heroku-push:
-  docker push registry.heroku.com/sheltered-falls-06080/web:latest
+  docker push "registry.heroku.com/$APP/web:latest"
 
 heroku-release:
-  heroku container:release web --app sheltered-falls-06080
+  heroku container:release web --app "$APP"
 
 heroku-migrate:
-  heroku run aerich upgrade --app sheltered-falls-06080
+  heroku run aerich upgrade --app "$APP"
 
 #### github ###################################################################
 
