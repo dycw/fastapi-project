@@ -1,8 +1,7 @@
-name: push to any
+name: push
 
 on:
   - push
-  - workflow_call
 
 env:
   IMAGE: ghcr.io/$(echo $GITHUB_REPOSITORY | tr '[A-Z]' '[a-z]')/summarizer
