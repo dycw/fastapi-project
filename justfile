@@ -72,10 +72,12 @@ heroku-migrate:
 
 #### github ###################################################################
 
+USER := "dycw"
+REPO := "fastapi-project"
+
 github-build:
   docker build -f src/Dockerfile.prod \
-    -t ghcr.io/dycw/tutorial-test-driven-development-with-fastapi-and-docker/summarizer:latest \
-    ./src
+    -t "ghcr.io/$USER/$REPO/summarizer:latest" ./src
 
 github-push:
-  docker push ghcr.io/dycw/tutorial-test-driven-development-with-fastapi-and-docker/summarizer:latest
+  docker push "ghcr.io/$USER/$REPO/summarizer:latest"

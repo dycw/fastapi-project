@@ -63,7 +63,8 @@ Example [FastAPI](https://fastapi.tiangolo.com/) project
    docker push "ghcr.io/$USER/$REPO/summarizer:latest"
    ```
 
-1. Add secret `HEROKU_AUTH_TOKEN`:
+1. Add secret `HEROKU_AUTH_TOKEN` from below, update `HEROKU_APP_NAME` in
+   GitHub Actions:
 
    ```bash
    heroku auth:token
