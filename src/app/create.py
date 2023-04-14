@@ -1,5 +1,6 @@
 from beartype import beartype
 from fastapi import FastAPI
+
 import app.routes.front.home
 
 

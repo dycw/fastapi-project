@@ -11,25 +11,26 @@ Example [FastAPI](https://fastapi.tiangolo.com/) project
    ```bash
    heroku create
    heroku container:login
-   export APP=sheltered-falls-06080
+   export APP=infinite-shore-17009
    ```
 
 1. Test:
 
    ```bash
+   # just heroku-create
    heroku addons:create heroku-postgresql:mini --app "$APP"
 
    # just heroku-build
    docker build -f project/Dockerfile.prod -t "registry.heroku.com/$APP/web" ./src
 
    # just heroku-run
-   docker run --name fastapi-project -e PORT=8765 -e DATABASE_URL=sqlite://sqlite.db -p 5003:8765 "registry.heroku.com/$APP/web":latest
+   docker run --name app -e PORT=8765 -e DATABASE_URL=sqlite://sqlite.db -p 5003:8765 "registry.heroku.com/$APP/web":latest
    ```
 
 1. Remove:
 
    ```bash
-   # just docker-rm
+   # just prod-rm
    docker rm app -f
    ```
 
