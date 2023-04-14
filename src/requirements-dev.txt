@@ -130,9 +130,9 @@ execnet==1.9.0 \
     --hash=sha256:8f694f3ba9cc92cab508b152dcfe322153975c29bda272e2fd7f3f00f36e47c5 \
     --hash=sha256:a295f7cc774947aac58dde7fdc85f4aa00c42adf5d8f5468fc630c1acf30a142
     # via pytest-xdist
-fastapi==0.95.0 \
-    --hash=sha256:99d4fdb10e9dd9a24027ac1d0bd4b56702652056ca17a6c8721eec4ad2f14e18 \
-    --hash=sha256:daf73bbe844180200be7966f68e8ec9fd8be57079dff1bacb366db32729e6eb5
+fastapi==0.95.1 \
+    --hash=sha256:9569f0a381f8a457ec479d90fa01005cfddaae07546eb1f3fa035bc4797ae7d5 \
+    --hash=sha256:a870d443e5405982e1667dfe372663abf10754f246866056336d7f01c21dab07
     # via -r requirements/requirements.in
 filelock==3.11.0 \
     --hash=sha256:3618c0da67adcc0506b015fd11ef7faf1b493f0b40d87728e19986b536890c37 \
