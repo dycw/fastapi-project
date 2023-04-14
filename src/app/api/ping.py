@@ -10,7 +10,7 @@ router = APIRouter()
 @beartype
 async def pong(*, settings: Settings = Depends(get_settings)) -> dict[str, str | bool]:
     return {
-        "ping": "pong4",
+        "ping": "pong5",
         "environment": settings.environment,
         "testing": settings.testing,
     }
