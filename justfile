@@ -21,7 +21,7 @@ down:
 lint:
   docker compose exec web python -m black . --check && python -m ruff .
 
-logs-web:
+logs:
   docker compose logs web
 
 psql:
@@ -29,6 +29,10 @@ psql:
 
 @ruff *args='.':
   docker compose exec web python -m ruff "$@"
+
+sync:
+  pip install pip-tools
+  pip-sync src/requirements*
 
 @test *args='.':
   docker compose exec web python -m pytest "$@"

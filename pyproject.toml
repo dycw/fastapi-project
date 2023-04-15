@@ -1,4 +1,30 @@
+#### app ######################################################################
+[app]
+environment = "sa"
+
 #### black ####################################################################
 [tool.black]
 skip-magic-trailing-comma = true
 target-version = ["py311"]
+
+#### pyright ##################################################################
+[tool.pyright]
+include = ["src"]
+exclude = ["**/__pycache__", ".direnv", ".git", ".venv", "src/migrations/models"]
+pythonVersion= "3.11"
+executionEnvironments = [{ root = "src" }]
+typeCheckingMode = "strict"
+reportMissingTypeStubs = false
+reportIncompatibleMethodOverride = false
+reportMissingTypeArgument = false
+reportPrivateUsage = false
+reportPrivateImportUsage = false
+reportUnknownArgumentType = false
+reportUnknownMemberType = false
+reportUnknownParameterType = false
+reportUnknownVariableType = false
+reportUntypedBaseClass = false
+reportMissingSuperCall = "error"
+reportPropertyTypeMismatch = "error"
+reportUnnecessaryTypeIgnoreComment = "error"
+reportUnusedCallResult = "error"
