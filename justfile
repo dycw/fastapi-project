@@ -41,6 +41,9 @@ sync:
   docker compose exec web python -m pytest "$@" --cov="."
 
 up:
+  docker compose up --build
+
+upd:
   docker compose up -d --build
 
 #### production ###############################################################

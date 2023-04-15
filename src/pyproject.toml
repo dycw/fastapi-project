@@ -4,6 +4,10 @@ tortoise_orm = "app.db.TORTOISE_ORM"
 location = "./migrations"
 src_folder = "./."
 
+#### app ######################################################################
+[app]
+environment = "development"
+
 #### black ####################################################################
 [tool.black]
 skip-magic-trailing-comma = true

@@ -1,10 +1,10 @@
-from typing import Any
-
 from beartype import beartype
 from fastapi import APIRouter, Depends
+from pydantic import BaseModel
+from semver.version import Version
 
 from app import __version__
-from app.config import ENVIRONMENT, EnvironmentModel, Settings, get_settings
+from app.config import ENVIRONMENT, Environment, Settings, get_settings
 
 router = APIRouter()
 
@@ -19,13 +19,15 @@ async def pong(*, settings: Settings = Depends(get_settings)) -> dict[str, str |
     }
 
 
-@router.get("/environment", response_model=EnvironmentModel)
-@beartype
-async def env() -> dict[str, Any]:
-    return {"environment": ENVIRONMENT}
+class _DebugModel(BaseModel):
+    environment: Environment
+    version: tuple[int, int, int]
 
 
-@router.get("/version")
+@router.get("/debug")
 @beartype
-async def version() -> dict[str, str]:
-    return {"version": __version__}
+async def debug() -> _DebugModel:
+    version = Version.parse(__version__)
+    return _DebugModel(
+        environment=ENVIRONMENT, version=(version.major, version.minor, version.patch)
+    )

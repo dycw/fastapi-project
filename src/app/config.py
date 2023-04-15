@@ -4,7 +4,7 @@ from logging import getLogger
 from typing import cast
 
 from beartype import beartype
-from pydantic import AnyUrl, BaseModel, BaseSettings
+from pydantic import AnyUrl, BaseSettings
 from typed_settings import find, settings
 from utilities.typed_settings import load_settings
 
@@ -30,15 +30,11 @@ class Environment(StrEnum):
     production = auto()
 
 
-class EnvironmentModel(BaseModel):
-    environment: Environment
-
-
 @settings
 class EnvironmentSettings:
-    env: Environment = Environment.development
+    environment: Environment = Environment.development
 
 
 ENVIRONMENT = load_settings(
     EnvironmentSettings, appname="app", config_files=[find("pyproject.toml")]
-).env
+).environment
