@@ -1,8 +1,10 @@
+from typing import Any
+
 from beartype import beartype
 from fastapi import APIRouter, Depends
 
 from app import __version__
-from app.config import Settings, get_settings
+from app.config import ENVIRONMENT, EnvironmentModel, Settings, get_settings
 
 router = APIRouter()
 
@@ -15,6 +17,12 @@ async def pong(*, settings: Settings = Depends(get_settings)) -> dict[str, str |
         "environment": settings.environment,
         "testing": settings.testing,
     }
+
+
+@router.get("/environment", response_model=EnvironmentModel)
+@beartype
+async def env() -> dict[str, Any]:
+    return {"environment": ENVIRONMENT}
 
 
 @router.get("/version")
