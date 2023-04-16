@@ -24,7 +24,7 @@ Example [FastAPI](https://fastapi.tiangolo.com/) project
    docker build -f project/Dockerfile.prod -t "registry.heroku.com/$APP/web" ./src
 
    # just heroku-run
-   docker run --name app -e PORT=8765 -e DATABASE_URL=sqlite://sqlite.db -p 5003:8765 "registry.heroku.com/$APP/web":latest
+   docker run --name app -e PORT=8765 -e APP_ENVIRONMENT=production -p 5003:8765 "registry.heroku.com/$APP/web":latest
    ```
 
 1. Remove:

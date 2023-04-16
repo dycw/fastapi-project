@@ -50,8 +50,6 @@ WORKDIR $APP_HOME
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-ENV ENVIRONMENT prod
-ENV TESTING 0
 ENV APP_ENVIRONMENT production
 
 # install system dependencies

@@ -72,9 +72,7 @@ jobs:
             -d \
             --name app \
             -e PORT=8765 \
-            -e ENVIRONMENT=dev \
-            -e DATABASE_URL=sqlite://sqlite.db \
-            -e DATABASE_TEST_URL=sqlite://sqlite.db \
+            -e APP_ENVIRONMENT=development \
             -p 5003:8765 \
             ${{ env.IMAGE }}-final:latest
       - name: Install requirements
