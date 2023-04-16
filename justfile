@@ -65,7 +65,7 @@ heroku-create:
   heroku addons:create heroku-postgresql:mini --app "$APP"
 
 heroku-run:
-  docker run --name app -e PORT=8765 -e DATABASE_URL=sqlite://sqlite.db \
+  docker run --name app -e PORT=8765 -e APP_ENVIRONMENT=production \
     -p 5003:8765 registry.heroku.com/$APP/web:latest
 
 heroku-push:
