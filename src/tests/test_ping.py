@@ -12,10 +12,3 @@ def test_debug(*, test_app: TestClient) -> None:
     assert set(json := response.json()) == {"environment", "version"}
     assert isinstance(Environment[json["environment"]], Environment)
     assert isinstance(Version(*json["version"]), Version)
-
-
-@beartype
-def test_ping(*, test_app: TestClient) -> None:
-    response = test_app.get("/ping")
-    assert response.status_code == HTTP_200_OK
-    assert response.json() == {"environment": "dev", "ping": "pong", "testing": "True"}

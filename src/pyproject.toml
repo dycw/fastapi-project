@@ -5,8 +5,20 @@ location = "./migrations"
 src_folder = "./."
 
 #### app ######################################################################
-[app]
+[app.environment]
 environment = "development"
+
+[app.development]
+database_url = "postgres://postgres:postgres@web-db:5432/web_dev"
+database_test_url = "postgres://postgres:postgres@web-db:5432/web_test"
+
+[app.staging]
+database_url = "postgres://postgres:postgres@web-db:5432/web_dev"
+database_test_url = "postgres://postgres:postgres@web-db:5432/web_test"
+
+[app.production]
+database_url = "sqlite://sqlite.db"
+database_test_url = "sqlite://sqlite.db"
 
 #### black ####################################################################
 [tool.black]

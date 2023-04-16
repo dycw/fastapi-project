@@ -98,9 +98,9 @@ dycw-utilities[semver,typed-settings]==0.9.0 \
     --hash=sha256:17e8829caa101533cd000df8835de1f433437bdaa1e11061a726259310ec3aa7 \
     --hash=sha256:6e33db90e6c86af59bc74c0585e58bde96fee66b5836d75b6c55b734c02f75cd
     # via -r requirements/requirements.in
-email-validator==1.3.1 \
-    --hash=sha256:49a72f5fa6ed26be1c964f0567d931d10bf3fdeeacdf97bc26ef1cd2a44e0bda \
-    --hash=sha256:d178c5c6fa6c6824e9b04f199cf23e79ac15756786573c190d2ad13089411ad2
+email-validator==2.0.0 \
+    --hash=sha256:07c61b62ee446e39274b18204afa8e422baf64570776045272b04d10c02f64f6 \
+    --hash=sha256:f4904f4145c11f8de5897afbb8d7db4b465c57f13db1c8c106c16d02bceebd9a
     # via pydantic
 fastapi==0.95.1 \
     --hash=sha256:9569f0a381f8a457ec479d90fa01005cfddaae07546eb1f3fa035bc4797ae7d5 \

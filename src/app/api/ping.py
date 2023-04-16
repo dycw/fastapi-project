@@ -1,22 +1,12 @@
 from beartype import beartype
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter
 from pydantic import BaseModel
 from semver.version import Version
 
 from app import __version__
-from app.config import ENVIRONMENT, Environment, Settings, get_settings
+from app.config import ENVIRONMENT, Environment
 
 router = APIRouter()
-
-
-@router.get("/ping")
-@beartype
-async def pong(*, settings: Settings = Depends(get_settings)) -> dict[str, str | bool]:
-    return {
-        "ping": "pong",
-        "environment": settings.environment,
-        "testing": settings.testing,
-    }
 
 
 class _DebugModel(BaseModel):

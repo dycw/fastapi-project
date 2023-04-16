@@ -1,40 +1,43 @@
 from enum import StrEnum, auto
-from functools import lru_cache
-from logging import getLogger
-from typing import cast
 
-from beartype import beartype
-from pydantic import AnyUrl, BaseSettings
 from typed_settings import find, settings
 from utilities.typed_settings import load_settings
 
-_LOGGER = getLogger("uvicorn")
-
-
-class Settings(BaseSettings):
-    environment: str = "dev"
-    testing: bool = cast(bool, 0)
-    database_url: AnyUrl = cast(AnyUrl, None)
-
-
-@lru_cache
-@beartype
-def get_settings() -> Settings:
-    _LOGGER.info("Loading config settings from the environment...")
-    return Settings()
-
 
 class Environment(StrEnum):
+    """An enumeration of the environments."""
+
     development = auto()
     staging = auto()
     production = auto()
 
 
 @settings
-class EnvironmentSettings:
+class EnvironmentChoiceSettings:
+    """Settings dictating the choice of an environment."""
+
     environment: Environment = Environment.development
 
 
 ENVIRONMENT = load_settings(
-    EnvironmentSettings, appname="app", config_files=[find("pyproject.toml")]
+    EnvironmentChoiceSettings,
+    appname="app",
+    config_files=[find("pyproject.toml")],
+    config_file_section="environment",
 ).environment
+
+
+@settings
+class EnvironmentSettings:
+    """Settings for a given environment."""
+
+    database_url: str
+    database_test_url: str
+
+
+SETTINGS = load_settings(
+    EnvironmentSettings,
+    appname="app",
+    config_files=[find("pyproject.toml")],
+    config_file_section=f"app.{ENVIRONMENT.name}",
+)
