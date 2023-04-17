@@ -4,25 +4,48 @@ services:
   web:
     build: ./src
     command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
-    volumes:
-      - ./src:/usr/src/app
+    container_name: web
+    depends_on:
+      - postgres
+    environment:
+      APP_ENVIRONMENT: development
+      ENVIRONMENT: dev
+      TESTING: 0
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/web_dev
+      DATABASE_TEST_URL: postgres://postgres:postgres@postgres:5432/web_test
     ports:
       - 8001:8000
-    environment:
-      - APP_ENVIRONMENT=development
-      - ENVIRONMENT=dev
-      - TESTING=0
-      - DATABASE_URL=postgres://postgres:postgres@web-db:5432/web_dev
-      - DATABASE_TEST_URL=postgres://postgres:postgres@web-db:5432/web_test
-    depends_on:
-      - web-db
+    volumes:
+      - ./src:/usr/src/app
 
-  web-db:
+  postgres:
     build:
       context: ./src/db
       dockerfile: Dockerfile
+    container_name: postgres
     expose:
-      - 5432
+      - 5432:5432
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    restart: always
+    volumes:
+      - local-postgres-data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin4
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - 8002:80
+    volumes:
+      - local-pgadmin-data:/var/lib/pgadmin
+
+volumes:
+  local-postgres-data:
+  local-pgadmin-data:

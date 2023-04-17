@@ -25,7 +25,7 @@ logs:
   docker compose logs web
 
 psql:
-  docker compose exec web-db psql -U postgres
+  docker compose exec postgres psql -U postgres
 
 @ruff *args='.':
   docker compose exec web python -m ruff "$@"
