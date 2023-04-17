@@ -5,6 +5,8 @@ from fastapi import FastAPI
 
 from app.api import home, ping, summaries
 from app.db import init_db
+from app.db_sqla.engines import ENGINE
+from app.db_sqla.schemas.all import create_tables
 
 _logger = getLogger("uvicorn")
 
@@ -27,6 +29,7 @@ app = create_application()
 async def startup_event() -> None:
     _logger.info("Starting up...")
     init_db(app)
+    create_tables(ENGINE)
 
 
 @app.on_event("shutdown")

@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from app.config import SETTINGS
 
-ENGINE = create_engine(SETTINGS.database_url)
+ENGINE = create_engine(SETTINGS.database_url_sqla)
 
 
 @beartype
