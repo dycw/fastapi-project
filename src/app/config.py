@@ -33,6 +33,8 @@ class EnvironmentSettings:
 
     database_url: str
     database_test_url: str
+    database_url_sqla: str
+    database_test_url_sqla: str
 
 
 SETTINGS = load_settings(

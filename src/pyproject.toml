@@ -9,16 +9,22 @@ src_folder = "./."
 environment = "development"
 
 [app.development]
-database_url = "postgres://postgres:postgres@postgres:5432/web_dev"
-database_test_url = "postgres://postgres:postgres@postgres:5432/web_test"
+database_url = "postgres://postgres:postgres@db:5432/web_dev"
+database_test_url = "postgres://postgres:postgres@db:5432/web_test"
+database_url_sqla = "postgresql+psycopg2://postgres:postgres@db:5432/web_dev"
+database_test_url_sqla = "postgresql+psycopg2://postgres:postgres@db:5432/web_dev"
 
 [app.staging]
-database_url = "postgres://postgres:postgres@postgres:5432/web_dev"
-database_test_url = "postgres://postgres:postgres@postgres:5432/web_test"
+database_url = "postgres://postgres:postgres@db:5432/web_dev"
+database_test_url = "postgres://postgres:postgres@db:5432/web_test"
+database_url_sqla = "postgresql+psycopg2://postgres:postgres@db:5432/web_dev"
+database_test_url_sqla = "postgresql+psycopg2://postgres:postgres@db:5432/web_dev"
 
 [app.production]
 database_url = "sqlite://sqlite.db"
 database_test_url = "sqlite://sqlite.db"
+database_url_sqla = "sqlite://sqlite.db"
+database_test_url_sqla = "sqlite://sqlite.db"
 
 #### black ####################################################################
 [tool.black]
