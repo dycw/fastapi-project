@@ -41,6 +41,21 @@ skip_empty = true
 [tool.coverage.html]
 directory = ".coverage/html"
 
+#### pytest ###################################################################
+[tool.pytest.ini_options]
+addopts = [
+  "-rsxX",
+  "--strict-markers",
+  "--tb=native"
+]
+filterwarnings = [
+  "error",
+  "ignore::DeprecationWarning",
+  "ignore:Implicitly cleaning up <TemporaryDirectory '.*'>:ResourceWarning",
+]
+minversion = "7.0"
+xfail_strict = true
+
 #### ruff #####################################################################
 [tool.ruff]
 exclude = ["migrations/**"]
