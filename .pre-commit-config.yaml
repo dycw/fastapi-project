@@ -1,7 +1,7 @@
 repos:
   # fixers
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.261
+    rev: v0.0.262
     hooks:
       - id: ruff
         args: [--fix]
@@ -55,8 +55,7 @@ repos:
       - id: pip-compile
         args:
           - --allow-unsafe
-          - --generate-hashes
-          - --output-file=src/requirements.txt
+          - --output-file=requirements/requirements.txt
           - --quiet
           - --upgrade
           - requirements/requirements.in
@@ -64,8 +63,7 @@ repos:
       - id: pip-compile
         args:
           - --allow-unsafe
-          - --generate-hashes
-          - --output-file=src/requirements-dev.txt
+          - --output-file=requirements/requirements-dev.txt
           - --quiet
           - --upgrade
           - requirements/requirements.in

@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://derek_prod:password@db:5432/db_prod
+    ports:
+      - 8009:80
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=derek_prod
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=db_prod
+    expose:
+      - 5432
