@@ -25,14 +25,14 @@ logs:
   docker compose logs web
 
 psql:
-  docker compose exec postgres psql -U postgres
+  docker compose exec db psql -d db -U derek
 
 @ruff *args='.':
   docker compose exec web python -m ruff "$@"
 
 sync:
   pip install pip-tools
-  pip-sync src/requirements*
+  pip-sync requirements/requirements*.txt
 
 @test *args='.':
   docker compose exec web python -m pytest "$@"
@@ -45,6 +45,12 @@ up:
 
 upd:
   docker compose up -d --build
+
+pup:
+  docker compose -f docker-compose.prod.yml up --build
+
+pupd:
+  docker compose -f docker-compose.prod.yml up -d --build
 
 #### production ###############################################################
 

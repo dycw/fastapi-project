@@ -26,13 +26,13 @@ jobs:
             --target builder \
             --cache-from ${{ env.IMAGE }}-builder:latest \
             --tag ${{ env.IMAGE }}-builder:latest \
-            --file ./src/Dockerfile.prod \
-            ./src
+            --file ./Dockerfile.prod \
+            .
           docker build \
             --cache-from ${{ env.IMAGE }}-final:latest \
             --tag ${{ env.IMAGE }}-final:latest \
-            --file ./src/Dockerfile.prod \
-            ./src
+            --file ./Dockerfile.prod \
+            .
       - name: Push images
         run: |
           docker push ${{ env.IMAGE }}-builder:latest
@@ -59,13 +59,13 @@ jobs:
             --target builder \
             --cache-from ${{ env.IMAGE }}-builder:latest \
             --tag ${{ env.IMAGE }}-builder:latest \
-            --file ./src/Dockerfile.prod \
-            "./src"
+            --file ./Dockerfile.prod \
+            .
           docker build \
             --cache-from ${{ env.IMAGE }}-final:latest \
             --tag ${{ env.IMAGE }}-final:latest \
-            --file ./src/Dockerfile.prod \
-            "./src"
+            --file ./Dockerfile.prod \
+            .
       - name: Run container
         run: |
           docker run \
@@ -74,7 +74,6 @@ jobs:
             -e PORT=8765 \
             -e ENVIRONMENT=dev \
             -e DATABASE_URL=sqlite://sqlite.db \
-            -e DATABASE_TEST_URL=sqlite://sqlite.db \
             -p 5003:8765 \
             ${{ env.IMAGE }}-final:latest
       - name: Install requirements
