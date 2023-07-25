@@ -4,90 +4,30 @@
 #
 #    pip-compile --allow-unsafe --output-file=requirements/requirements-dev.txt requirements/requirements-dev.in requirements/requirements.in
 #
-aiopg==1.4.0
-    # via -r requirements/requirements.in
-anyio==3.6.2
-    # via
-    #   httpcore
-    #   starlette
-    #   watchfiles
-async-timeout==4.0.2
-    # via aiopg
-asyncpg==0.27.0
-    # via -r requirements/requirements.in
-attrs==23.1.0
-    # via
-    #   cattrs
-    #   typed-settings
-beartype==0.13.1
-    # via dycw-utilities
 black==23.3.0
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 build==0.10.0
     # via pip-tools
-cattrs==22.2.0
-    # via typed-settings
-certifi==2022.12.7
-    # via
-    #   httpcore
-    #   httpx
 cfgv==3.3.1
     # via pre-commit
 click==8.1.3
     # via
     #   black
     #   pip-tools
-    #   typed-settings
-    #   uvicorn
-databases==0.6.2
-    # via ormar
 distlib==0.3.6
     # via virtualenv
-dnspython==2.3.0
-    # via email-validator
-dycw-utilities[semver,typed-settings]==0.9.0
-    # via -r requirements/requirements.in
-email-validator==2.0.0.post2
-    # via pydantic
 execnet==1.9.0
     # via pytest-xdist
-fastapi==0.95.1
-    # via -r requirements/requirements.in
 filelock==3.12.0
     # via virtualenv
-greenlet==2.0.2
-    # via sqlalchemy
-gunicorn==20.1.0
-    # via -r requirements/requirements.in
-h11==0.14.0
-    # via
-    #   httpcore
-    #   uvicorn
-httpcore==0.17.0
-    # via httpx
-httptools==0.5.0
-    # via uvicorn
-httpx==0.24.0
-    # via -r requirements/requirements.in
 identify==2.5.22
     # via pre-commit
-idna==3.4
-    # via
-    #   anyio
-    #   email-validator
-    #   httpx
 iniconfig==2.0.0
     # via pytest
-jinja2==3.1.2
-    # via -r requirements/requirements.in
-markupsafe==2.1.2
-    # via jinja2
 mypy-extensions==1.0.0
     # via black
 nodeenv==1.7.0
     # via pre-commit
-ormar==0.12.1
-    # via -r requirements/requirements.in
 packaging==23.1
     # via
     #   black
@@ -96,7 +36,7 @@ packaging==23.1
 pathspec==0.11.1
     # via black
 pip-tools==6.13.0
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 platformdirs==3.2.0
     # via
     #   black
@@ -104,61 +44,21 @@ platformdirs==3.2.0
 pluggy==1.0.0
     # via pytest
 pre-commit==3.2.2
-    # via -r requirements/requirements-dev.in
-psycopg2-binary==2.9.6
-    # via
-    #   -r requirements/requirements.in
-    #   aiopg
-pydantic[email]==1.10.4
-    # via
-    #   -r requirements/requirements.in
-    #   fastapi
-    #   ormar
+    # via -r requirements-dev.in
 pyproject-hooks==1.0.0
     # via build
 pytest==7.3.1
     # via
-    #   -r requirements/requirements-dev.in
+    #   -r requirements-dev.in
     #   pytest-xdist
 pytest-xdist==3.2.1
-    # via -r requirements/requirements-dev.in
-python-dotenv==1.0.0
-    # via uvicorn
+    # via -r requirements-dev.in
 pyyaml==6.0
-    # via
-    #   pre-commit
-    #   uvicorn
+    # via pre-commit
 ruff==0.0.262
-    # via -r requirements/requirements-dev.in
-semver==3.0.0
-    # via dycw-utilities
-sniffio==1.3.0
-    # via
-    #   anyio
-    #   httpcore
-    #   httpx
-sqlalchemy==1.4.41
-    # via
-    #   databases
-    #   ormar
-starlette==0.26.1
-    # via fastapi
-typed-settings[click]==23.0.0
-    # via dycw-utilities
-typing-extensions==4.5.0
-    # via
-    #   dycw-utilities
-    #   pydantic
-uvicorn[standard]==0.20.0
-    # via -r requirements/requirements.in
-uvloop==0.17.0
-    # via uvicorn
+    # via -r requirements-dev.in
 virtualenv==20.22.0
     # via pre-commit
-watchfiles==0.19.0
-    # via uvicorn
-websockets==11.0.2
-    # via uvicorn
 wheel==0.40.0
     # via pip-tools
 
@@ -167,6 +67,5 @@ pip==23.1
     # via pip-tools
 setuptools==67.7.0
     # via
-    #   gunicorn
     #   nodeenv
     #   pip-tools
